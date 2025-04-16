@@ -1,13 +1,8 @@
-
 import { motion } from "framer-motion";
+import { TimelineStep } from "./types";
 
 interface SuccessStoryCardProps {
-  step: {
-    year: string;
-    title: string;
-    desc: string;
-    logo: string[];
-  };
+  step: TimelineStep;
   index: number;
   animate: boolean;
 }

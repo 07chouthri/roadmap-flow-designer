@@ -1,7 +1,9 @@
+
 import React, { useEffect, useState } from "react";
 import SuccessStoryHeader from "./success-story/SuccessStoryHeader";
-import SuccessStoryCard from "./success-story/SuccessStoryCard";
 import SuccessStoryBackground from "./success-story/SuccessStoryBackground";
+import TimelineGrid from "./success-story/TimelineGrid";
+import { TimelineStep } from "./success-story/types";
 
 const SuccessStory = () => {
   const [animate, setAnimate] = useState(false);
@@ -11,7 +13,7 @@ const SuccessStory = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const steps = [
+  const steps: TimelineStep[] = [
     {
       year: "2017",
       title: "Startup Launched",
@@ -66,17 +68,7 @@ const SuccessStory = () => {
       
       <div className="relative container mx-auto px-4 z-10">
         <SuccessStoryHeader />
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
-          {steps.map((step, i) => (
-            <SuccessStoryCard
-              key={i}
-              step={step}
-              index={i}
-              animate={animate}
-            />
-          ))}
-        </div>
+        <TimelineGrid steps={steps} animate={animate} />
       </div>
     </div>
   );
