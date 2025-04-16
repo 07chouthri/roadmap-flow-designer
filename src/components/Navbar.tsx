@@ -20,7 +20,7 @@ const Navbar = () => {
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300 ease-in-out",
         isScrolled 
-          ? "bg-white/80 backdrop-blur-md"
+          ? "bg-black/20 backdrop-blur-md"
           : "bg-transparent",
         isVisible ? "translate-y-0" : "-translate-y-full"
       )}

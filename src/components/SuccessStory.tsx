@@ -1,4 +1,6 @@
+
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 
 const SuccessStory = () => {
   const [animate, setAnimate] = useState(false);
@@ -58,44 +60,52 @@ const SuccessStory = () => {
   ];
 
   return (
-    <div className="relative py-20 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-hads-purple/5 to-hads-pink/5 animate-gradient-shift" />
-      
-      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-5" />
+    <div className="relative py-24 overflow-hidden bg-gradient-to-br from-gray-900 via-gray-800 to-black">
+      {/* Animated background elements */}
+      <div className="absolute inset-0">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(233,30,99,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(58,27,109,0.1),transparent_50%)]" />
+      </div>
 
       <div className="relative container mx-auto px-4 z-10">
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-hads-purple to-hads-pink animate-fade-in">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <h1 className="text-5xl md:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-hads-pink via-white to-hads-purple mb-6">
             Our Success Story
           </h1>
-          <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto animate-fade-up">
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto">
             A journey through our milestones in providing top-tier cloud solutions, from cloud migration to cutting-edge cybersecurity.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
           {steps.map((step, i) => (
-            <div
+            <motion.div
               key={i}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: animate ? 1 : 0, y: animate ? 0 : 30 }}
+              transition={{ duration: 0.6, delay: i * 0.2 }}
               className="group relative"
-              style={{
-                opacity: animate ? 1 : 0,
-                transform: animate ? "translateY(0)" : "translateY(40px)",
-                transition: `all 0.8s ease-out ${i * 0.2}s`,
-              }}
             >
-              <div className="relative p-6 rounded-xl backdrop-blur-sm border border-white/20 bg-white/5 hover:bg-white/10 transition-all duration-300 group-hover:-translate-y-2">
-                <div className="absolute -top-4 -right-4 w-16 h-16 rounded-full bg-gradient-to-br from-hads-purple to-hads-pink text-white flex items-center justify-center text-xl font-bold transform transition-transform group-hover:scale-110">
+              <div className="relative p-8 rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-white/20 transition-all duration-500">
+                {/* Year badge */}
+                <div className="absolute -top-4 -right-4 w-16 h-16 rounded-full bg-gradient-to-br from-hads-purple to-hads-pink text-white flex items-center justify-center text-xl font-bold transform transition-transform group-hover:scale-110 group-hover:rotate-12">
                   {step.year}
                 </div>
 
-                <h3 className="text-xl font-semibold text-hads-purple mb-4">
+                <h3 className="text-2xl font-semibold text-white mb-4 group-hover:text-hads-pink transition-colors">
                   {step.title}
                 </h3>
-                <p className="text-gray-600">{step.desc}</p>
+                <p className="text-gray-300 group-hover:text-white transition-colors">
+                  {step.desc}
+                </p>
 
                 {step.logo && step.logo.length > 0 && (
-                  <div className="flex gap-4 mt-4">
+                  <div className="flex gap-4 mt-6">
                     {step.logo.map((logo, index) => (
                       <img
                         key={index}
@@ -107,15 +117,17 @@ const SuccessStory = () => {
                   </div>
                 )}
 
-                <div className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-hads-purple to-hads-pink opacity-0 group-hover:opacity-100 transition-opacity" />
+                {/* Hover effect line */}
+                <div className="absolute -bottom-0.5 left-0 right-0 h-0.5 bg-gradient-to-r from-hads-purple via-hads-pink to-hads-purple opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
 
-      <div className="absolute top-20 left-10 w-20 h-20 bg-hads-purple/10 rounded-full blur-3xl animate-float" />
-      <div className="absolute bottom-20 right-10 w-32 h-32 bg-hads-pink/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "1s" }} />
+      {/* Decorative elements */}
+      <div className="absolute top-20 left-10 w-32 h-32 bg-hads-purple/10 rounded-full blur-3xl animate-pulse" />
+      <div className="absolute bottom-20 right-10 w-40 h-40 bg-hads-pink/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
     </div>
   );
 };

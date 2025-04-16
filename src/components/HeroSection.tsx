@@ -37,7 +37,7 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="relative h-screen w-full overflow-hidden">
+    <div className="fixed inset-0 w-full h-full">
       {/* Background Images */}
       {slides.map((slide, index) => (
         <div
@@ -51,9 +51,9 @@ const HeroSection = () => {
             alt={slide.title}
             className="w-full h-full object-cover"
           />
-          {/* Overlay gradients */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60" />
-          <div className="absolute inset-0 bg-gradient-to-r from-hads-purple/30 to-hads-pink/20" />
+          {/* Enhanced overlay gradients */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-transparent to-black/70" />
+          <div className="absolute inset-0 bg-gradient-to-r from-hads-purple/40 to-hads-pink/30" />
           
           {/* Animated pattern overlay */}
           <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-10 animate-fade-in" />
@@ -61,10 +61,10 @@ const HeroSection = () => {
       ))}
 
       {/* Content overlay */}
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="absolute inset-0 flex items-center justify-center mt-20">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center text-white">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-up">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-up">
               {slides[currentIndex].title}
             </h1>
           </div>
@@ -74,7 +74,7 @@ const HeroSection = () => {
       {/* Navigation buttons */}
       <button
         onClick={goToPrevious}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 z-30 bg-white/10 backdrop-blur-sm text-white p-4 rounded-full hover:bg-white/20 transition-all duration-300 group"
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 z-30 bg-black/20 backdrop-blur-sm text-white p-4 rounded-full hover:bg-white/20 transition-all duration-300 group"
       >
         <span className="group-hover:scale-110 block transition-transform">
           &#10094;
@@ -82,7 +82,7 @@ const HeroSection = () => {
       </button>
       <button
         onClick={goToNext}
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 z-30 bg-white/10 backdrop-blur-sm text-white p-4 rounded-full hover:bg-white/20 transition-all duration-300 group"
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 z-30 bg-black/20 backdrop-blur-sm text-white p-4 rounded-full hover:bg-white/20 transition-all duration-300 group"
       >
         <span className="group-hover:scale-110 block transition-transform">
           &#10095;
@@ -94,10 +94,10 @@ const HeroSection = () => {
         {slides.map((_, index) => (
           <button
             key={index}
-            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+            className={`h-2 rounded-full transition-all duration-300 ${
               index === currentIndex 
                 ? "bg-white w-8" 
-                : "bg-white/50 hover:bg-white/75"
+                : "bg-white/50 w-2 hover:bg-white/75"
             }`}
             onClick={() => setCurrentIndex(index)}
           />
