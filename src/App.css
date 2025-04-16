@@ -1,0 +1,630 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* New Animation Styles */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 10px 2px rgba(233, 30, 99, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 20px 5px rgba(233, 30, 99, 0.7);
+  }
+}
+
+.animate-glow {
+  animation: glow 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.animate-floating {
+  animation: floating 5s ease-in-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes background-pan {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: -200% center;
+  }
+}
+
+.animate-background-pan {
+  animation: background-pan 3s linear infinite;
+  background-size: 200% 100%;
+}
+
+.card-hover-effect {
+  transition: all 0.3s ease;
+}
+
+.card-hover-effect:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.text-gradient-animate {
+  background: linear-gradient(
+    to right,
+    #e91e63,
+    #3a1b6d,
+    #00bcd4,
+    #e91e63
+  );
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  animation: background-pan 6s linear infinite;
+}
+
+/* Rotating animation */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-rotate {
+  animation: rotate 10s linear infinite;
+}
+
+/* Diamond blinking animation */
+@keyframes diamond-blink {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+.animate-diamond {
+  position: relative;
+}
+
+.animate-diamond::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border: 2px solid rgba(233, 30, 99, 0.3);
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  animation: diamond-blink 4s ease-in-out infinite;
+}
+
+/* New Roadmap Animations */
+@keyframes fade-slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-slide-up {
+  animation: fade-slide-up 0.8s ease-out forwards;
+}
+
+@keyframes roadmap-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 188, 212, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px rgba(0, 188, 212, 0);
+  }
+}
+
+.roadmap-node {
+  animation: roadmap-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes line-grow {
+  from {
+    height: 0;
+  }
+  to {
+    height: 100%;
+  }
+}
+
+.animate-line-grow {
+  animation: line-grow 1.5s ease-out forwards;
+}
+
+/* Cloud roadmap shine effect */
+.shadow-glow {
+  box-shadow: 0 0 15px rgba(0, 188, 212, 0.5);
+}
+
+@keyframes shooting-star {
+  0% {
+    transform: translateX(-100%) translateY(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(200%) translateY(100%);
+    opacity: 0;
+  }
+}
+
+.shooting-star {
+  position: absolute;
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.4) 100%);
+  animation: shooting-star 6s linear infinite;
+  z-index: 0;
+}
+
+/* Pipeline connector animation */
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-dash {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: dash 2s linear forwards;
+}
+
+/* New transition helpers */
+.transition-delay-100 {
+  transition-delay: 100ms;
+}
+
+.transition-delay-200 {
+  transition-delay: 200ms;
+}
+
+.transition-delay-300 {
+  transition-delay: 300ms;
+}
+
+/* Enhanced line grow animation */
+@keyframes line-grow {
+  from {
+    height: 0;
+    opacity: 0;
+  }
+  to {
+    height: 100%;
+    opacity: 1;
+  }
+}
+
+.animate-line-grow {
+  animation: line-grow 1.5s ease-out forwards;
+}
+
+/* Enhanced roadmap animations */
+@keyframes scale-up {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-scale-up {
+  animation: scale-up 0.5s ease-out forwards;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Improved cloud journey shine effect */
+@keyframes cloud-shine {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.cloud-shine {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: cloud-shine 3s linear infinite;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* New background animation for the purple gradient with dots */
+.animated-purple-bg {
+  position: relative;
+  background: linear-gradient(135deg, #1A0B2E 0%, #3a1b6d 50%, #1A0B2E 100%);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  overflow: hidden;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-purple-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle, rgba(0, 188, 212, 0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.animated-purple-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 10% 20%, rgba(0, 188, 212, 0.05) 0%, transparent 40%),
+              radial-gradient(circle at 90% 80%, rgba(233, 30, 99, 0.05) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+/* Subtle floating particles animation */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+  animation: floatParticle 15s linear infinite;
+}
+
+@keyframes floatParticle {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-100px) translateX(20px);
+    opacity: 0;
+  }
+}
+
+/* Animation for tech icons to glow */
+.tech-icon-glow {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.tech-icon-glow::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(0, 188, 212, 0.4);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.tech-icon-glow:hover::after {
+  opacity: 1;
+}
+
+/* Enhanced card effect for the tech cards */
+.tech-card-enhanced {
+  background: rgba(26, 11, 46, 0.7);
+  border: 1px solid rgba(0, 188, 212, 0.2);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tech-card-enhanced:hover {
+  transform: translateY(-5px);
+  border-color: rgba(0, 188, 212, 0.5);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3), 0 0 10px rgba(0, 188, 212, 0.3);
+}
+
+.tech-card-enhanced::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 188, 212, 0) 0%,
+    rgba(0, 188, 212, 0.05) 50%,
+    rgba(0, 188, 212, 0) 100%
+  );
+  transform: rotate(30deg);
+  animation: shimmerEffect 6s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmerEffect {
+  0% {
+    transform: rotate(30deg) translateX(-100%);
+  }
+  100% {
+    transform: rotate(30deg) translateX(100%);
+  }
+}
+
+/* New transition animations specifically for feature tabs */
+@keyframes tab-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes tab-fade-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+.tab-enter {
+  animation: tab-fade-in 0.3s ease forwards;
+}
+
+.tab-exit {
+  animation: tab-fade-out 0.3s ease forwards;
+}
+
+/* Database icon pulse animation */
+@keyframes db-pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+.animate-db-pulse {
+  animation: db-pulse 2s ease-in-out infinite;
+}
+
+/* Card shine effect */
+@keyframes card-shine {
+  0% {
+    left: -100%;
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    left: 100%;
+    opacity: 0.1;
+  }
+}
+
+.card-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-shine::after {
+  content: '';
+  position: absolute;
+  top: -100%;
+  left: -100%;
+  width: 50%;
+  height: 300%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  animation: card-shine 6s ease-in-out infinite;
+}
+
+/* Scale in-out animation for icons */
+@keyframes scale-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.animate-scale-pulse {
+  animation: scale-pulse 2s ease-in-out infinite;
+}
+
+/* New transition styles for feature tabs */
+.transition-delay-400 {
+  transition-delay: 400ms;
+}
+
+.transition-delay-500 {
+  transition-delay: 500ms;
+}
+
+.transition-duration-400 {
+  transition-duration: 400ms;
+}
+
+/* Adding a shine effect for buttons */
+.button-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.button-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  transform: rotate(30deg);
+  animation: card-shine 3s ease-in-out infinite;
+}
+
+/* Typing animation for hero section */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+.typed-text {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 1 !important;
+  width: 0;
+}
+
+.typed-text.text-animated {
+  animation: typing 2s steps(40, end) forwards;
+}
