@@ -7,9 +7,6 @@ import SecurityAndCompliances from "../images/homeimages/Security and Compliance
 import Ai from "../images/homeimages/Ai.jpg";
 import Api from "../images/homeimages/Api.jpg";
 
-
-
-
 const HeroSection = () => {
   const slides = [
     { image: CloudMigration, title: "Cloud Migration" },
@@ -19,7 +16,6 @@ const HeroSection = () => {
     { image: SecurityAndCompliances, title: "Security & Compliances" },
     { image: Ai, title: "Ai" },
     { image: Api, title: "Api" },
-
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -40,16 +36,16 @@ const HeroSection = () => {
   };
 
   return (
-    <div
-      className="relative mx-auto mt-6 rounded-[10px] overflow-hidden flex items-center justify-center"
+    <div className="relative mx-auto mt-6 rounded-[10px] overflow-hidden flex items-center justify-center group"
       style={{
         width: "900px",
-        // maxWidth: "1280px",
         height: "460px",
-        // backgroundColor: "#e5e7eb",
       }}
     >
-      {/* Background Slides */}
+      <div className="absolute inset-0 bg-gradient-to-r from-hads-purple/80 to-hads-pink/30 mix-blend-overlay z-10" />
+      
+      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-10 z-10" />
+
       {slides.map((slide, index) => (
         <div
           key={index}
@@ -65,31 +61,24 @@ const HeroSection = () => {
           <img
             src={slide.image}
             alt={slide.title}
-            style={{
-              width: "100%",
-              height: "100%",
-              // objectFit: "cover",
-              transition: "transform 1.5s ease-in-out",
-              borderRadius: "10px",
-            }}
+            className="w-full h-full transition-transform duration-1000 ease-in-out rounded-[10px] group-hover:scale-110"
           />
 
-          {/* Overlay gradient */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 to-transparent">
+            <h3 className="text-white text-xl font-semibold">{slide.title}</h3>
+          </div>
         </div>
       ))}
 
-      {/* Arrows */}
       <button
         onClick={goToPrevious}
-        className="absolute top-1/2 left-3 transform -translate-y-1/2 z-30 bg-black/40 text-white p-2 rounded-full hover:scale-110 transition-transform duration-300"
-        style={{ fontSize: "24px" }}
+        className="absolute top-1/2 left-3 transform -translate-y-1/2 z-30 bg-white/10 backdrop-blur-sm text-white p-3 rounded-full hover:scale-110 transition-transform duration-300 hover:bg-white/20"
       >
         &#10094;
       </button>
       <button
         onClick={goToNext}
-        className="absolute top-1/2 right-3 transform -translate-y-1/2 z-30 bg-black/40 text-white p-2 rounded-full hover:scale-110 transition-transform duration-300"
-        style={{ fontSize: "24px" }}
+        className="absolute top-1/2 right-3 transform -translate-y-1/2 z-30 bg-white/10 backdrop-blur-sm text-white p-3 rounded-full hover:scale-110 transition-transform duration-300 hover:bg-white/20"
       >
         &#10095;
       </button>

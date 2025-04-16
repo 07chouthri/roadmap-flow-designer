@@ -18,10 +18,12 @@ const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-200 ease-in-out",
-        isScrolled ? "bg-white shadow-md" : "bg-white/95 backdrop-blur-sm",
-        isVisible ? "translate-y-0" : "-translate-y-full")
-      }
+        "fixed top-0 w-full z-50 transition-all duration-300 ease-in-out backdrop-blur-md",
+        isScrolled 
+          ? "bg-white/80 shadow-lg" 
+          : "bg-gradient-to-r from-hads-purple/40 to-hads-pink/30 border-b border-white/10",
+        isVisible ? "translate-y-0" : "-translate-y-full"
+      )}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div className="flex items-center justify-between h-16 sm:h-20">

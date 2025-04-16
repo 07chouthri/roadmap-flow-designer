@@ -66,198 +66,72 @@ const SuccessStory = () => {
         width: "90%",
         maxWidth: "1200px",
         padding: "40px 20px",
-        background: "#ffffff",
+        background: "linear-gradient(135deg, rgba(58, 27, 109, 0.1) 0%, rgba(233, 30, 99, 0.1) 100%)",
         borderRadius: "12px",
         boxShadow: "0 10px 40px rgba(0,0,0,0.1)",
         overflow: "hidden",
         fontFamily: "'Inter', sans-serif",
       }}
     >
-      {/* Soft white overlay */}
+      {/* Glass effect overlay */}
       <div
+        className="absolute inset-0 backdrop-blur-md bg-white/40 z-0"
+      />
+
+      {/* Background pattern */}
+      <div
+        className="absolute inset-0 opacity-5"
         style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          backgroundColor: "rgba(255, 255, 255, 0.85)",
-          zIndex: 1,
+          backgroundImage: "radial-gradient(circle at 1px 1px, #000 1px, transparent 0)",
+          backgroundSize: "20px 20px",
         }}
       />
-      {/* Background Image */}
-      <div
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          backgroundImage: `url(${CloudMigration})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          filter: "blur(8px)",
-          zIndex: 0,
-        }}
-      ></div>
 
-      {/* Title Section */}
-      <div
-        style={{
-          zIndex: 2,
-          position: "relative",
-          textAlign: "center",
-          marginBottom: "50px",
-        }}
-      >
-        <h1
-          style={{
-            fontSize: "48px",
-            fontWeight: "700",
-            color: "#333",
-            textTransform: "uppercase",
-            letterSpacing: "2px",
-            marginBottom: "15px",
-          }}
-        >
-          Our Success Story
-        </h1>
-        <p
-          style={{
-            fontSize: "20px",
-            color: "#666",
-            fontWeight: "400",
-            lineHeight: "1.6",
-            maxWidth: "800px",
-            margin: "0 auto",
-          }}
-        >
-          A journey through our milestones in providing top-tier cloud solutions, from cloud migration to cutting-edge cybersecurity.
-        </p>
-      </div>
+      {/* Content */}
+      <div className="relative z-10">
+        <div className="text-center mb-16">
+          <h1 className="text-4xl md:text-5xl font-bold text-hads-purple mb-6 relative inline-block">
+            Our Success Story
+            <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-hads-pink to-hads-purple transform scale-x-0 transition-transform duration-700 group-hover:scale-x-100" />
+          </h1>
+          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+            A journey through our milestones in providing top-tier cloud solutions, from cloud migration to cutting-edge cybersecurity.
+          </p>
+        </div>
 
-      {/* Timeline */}
-      <div
-        style={{
-          zIndex: 2,
-          position: "relative",
-          display: "grid",
-          gridTemplateColumns: "1fr 20px 1fr",
-          rowGap: "60px",
-          alignItems: "center",
-        }}
-      >
-        {/* Vertical Line */}
-        <div
-          style={{
-            gridColumn: "2 / 3",
-            height: "100%",
-            width: "6px",
-            background: "linear-gradient(180deg, #FF6F61, #F9A825)",
-            borderRadius: "10px",
-            boxShadow: "0 0 30px rgba(255, 95, 61, 0.2)",
-            animation: "pulseLine 2s infinite alternate",
-          }}
-        ></div>
-
-        {/* Steps */}
-        {steps.map((step, i) => {
-          const isLeft = i % 2 === 0;
-          return (
-            <React.Fragment key={i}>
-              <div
-                style={{
-                  gridColumn: isLeft ? "1 / 2" : "3 / 4",
-                  textAlign: isLeft ? "right" : "left",
-                  opacity: animate ? 1 : 0,
-                  transform: animate ? "translateY(0)" : "translateY(40px)",
-                  transition: `all 0.8s ease-out ${i * 0.3}s`,
-                }}
-              >
-                <div
-                  style={{
-                    display: "inline-block",
-                    padding: "30px 25px",
-                    backgroundColor: "#ffffff",
-                    color: "#333",
-                    borderRadius: "12px",
-                    boxShadow: "0 10px 40px rgba(0, 0, 0, 0.1)",
-                    maxWidth: "380px",
-                    cursor: "pointer",
-                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = "translateY(-5px) scale(1.03)";
-                    e.currentTarget.style.boxShadow = "0 0 40px rgba(255, 95, 61, 0.3)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = "translateY(0) scale(1)";
-                    e.currentTarget.style.boxShadow = "0 10px 40px rgba(0, 0, 0, 0.1)";
-                  }}
-                >
-                  <h3
-                    style={{
-                      fontSize: "22px",
-                      fontWeight: "600",
-                      color: "#333",
-                      marginBottom: "12px",
-                    }}
-                  >
-                    {step.year} – {step.title}
-                  </h3>
-                  <p
-                    style={{
-                      fontSize: "16px",
-                      lineHeight: "1.6",
-                      color: "#555",
-                      marginBottom: "15px",
-                    }}
-                  >
-                    {step.desc}
-                  </p>
-                  {step.logo && step.logo.length > 0 && (
-                    <div
-                      style={{
-                        marginTop: "10px",
-                        display: "flex",
-                        gap: "16px",
-                        flexWrap: "wrap",
-                      }}
-                    >
-                      {step.logo.map((logo, index) => (
-                        <img
-                          key={index}
-                          src={logo}
-                          alt="logo"
-                          style={{
-                            width: "35px",
-                            height: "auto",
-                            borderRadius: "8px",
-                            backgroundColor: "#fff",
-                            padding: "4px",
-                            boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-                          }}
-                        />
-                      ))}
-                    </div>
-                  )}
-                </div>
+        {/* Timeline grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
+          {steps.map((step, i) => (
+            <div
+              key={i}
+              className="relative p-6 rounded-xl bg-white/60 backdrop-blur-sm border border-white/20 shadow-lg transform hover:-translate-y-2 transition-all duration-300"
+              style={{
+                opacity: animate ? 1 : 0,
+                transform: animate ? "translateY(0)" : "translateY(40px)",
+                transition: `all 0.8s ease-out ${i * 0.3}s`,
+              }}
+            >
+              <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full bg-gradient-to-br from-hads-purple to-hads-pink text-white flex items-center justify-center text-xl font-bold shadow-lg">
+                {step.year}
               </div>
-              <div style={{ gridColumn: "2 / 3" }} />
-            </React.Fragment>
-          );
-        })}
+              <h3 className="text-xl font-semibold text-hads-purple mb-4">{step.title}</h3>
+              <p className="text-gray-600">{step.desc}</p>
+              {step.logo && step.logo.length > 0 && (
+                <div className="flex gap-4 mt-4">
+                  {step.logo.map((logo, index) => (
+                    <img
+                      key={index}
+                      src={logo}
+                      alt="Technology Logo"
+                      className="w-8 h-8 object-contain"
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
       </div>
-
-      {/* CSS Keyframes */}
-      <style>
-        {`
-          @keyframes pulseLine {
-            0% { box-shadow: 0 0 20px #FF6F61; }
-            100% { box-shadow: 0 0 50px #FF6F61; }
-          }
-        `}
-      </style>
     </div>
   );
 };

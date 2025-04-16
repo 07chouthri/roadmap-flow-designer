@@ -135,7 +135,11 @@ const Carousel = React.forwardRef<
         <div
           ref={ref}
           onKeyDownCapture={handleKeyDown}
-          className={cn("relative", className)}
+          className={cn(
+            "relative rounded-xl transition-all duration-300",
+            "hover:shadow-[0_0_30px_rgba(233,30,99,0.3)]",
+            className
+          )}
           role="region"
           aria-roledescription="carousel"
           {...props}
