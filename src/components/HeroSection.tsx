@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import CloudMigration from "../images/homeimages/Cloud Migration and consulting.jpg";
 import CloudManaged from "../images/homeimages/Cloud managed service.jpg";
@@ -36,52 +37,72 @@ const HeroSection = () => {
   };
 
   return (
-    <div className="relative mx-auto mt-6 rounded-[10px] overflow-hidden flex items-center justify-center group"
-      style={{
-        width: "900px",
-        height: "460px",
-      }}
-    >
-      <div className="absolute inset-0 bg-gradient-to-r from-hads-purple/80 to-hads-pink/30 mix-blend-overlay z-10" />
-      
-      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-10 z-10" />
-
+    <div className="relative h-screen w-full overflow-hidden">
+      {/* Background Images */}
       {slides.map((slide, index) => (
         <div
           key={index}
-          className={`absolute transition-all duration-1000 ease-in-out ${
-            index === currentIndex ? "z-20 opacity-100 scale-100" : "z-10 opacity-0 scale-105"
+          className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
+            index === currentIndex ? "opacity-100" : "opacity-0"
           }`}
-          style={{
-            width: "100%",
-            height: "100%",
-            overflow: "hidden",
-          }}
         >
           <img
             src={slide.image}
             alt={slide.title}
-            className="w-full h-full transition-transform duration-1000 ease-in-out rounded-[10px] group-hover:scale-110"
+            className="w-full h-full object-cover"
           />
-
-          <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/70 to-transparent">
-            <h3 className="text-white text-xl font-semibold">{slide.title}</h3>
-          </div>
+          {/* Overlay gradients */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-hads-purple/30 to-hads-pink/20" />
+          
+          {/* Animated pattern overlay */}
+          <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:16px_16px] opacity-10 animate-fade-in" />
         </div>
       ))}
 
+      {/* Content overlay */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center text-white">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-up">
+              {slides[currentIndex].title}
+            </h1>
+          </div>
+        </div>
+      </div>
+
+      {/* Navigation buttons */}
       <button
         onClick={goToPrevious}
-        className="absolute top-1/2 left-3 transform -translate-y-1/2 z-30 bg-white/10 backdrop-blur-sm text-white p-3 rounded-full hover:scale-110 transition-transform duration-300 hover:bg-white/20"
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 z-30 bg-white/10 backdrop-blur-sm text-white p-4 rounded-full hover:bg-white/20 transition-all duration-300 group"
       >
-        &#10094;
+        <span className="group-hover:scale-110 block transition-transform">
+          &#10094;
+        </span>
       </button>
       <button
         onClick={goToNext}
-        className="absolute top-1/2 right-3 transform -translate-y-1/2 z-30 bg-white/10 backdrop-blur-sm text-white p-3 rounded-full hover:scale-110 transition-transform duration-300 hover:bg-white/20"
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 z-30 bg-white/10 backdrop-blur-sm text-white p-4 rounded-full hover:bg-white/20 transition-all duration-300 group"
       >
-        &#10095;
+        <span className="group-hover:scale-110 block transition-transform">
+          &#10095;
+        </span>
       </button>
+
+      {/* Slide indicators */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            className={`w-2 h-2 rounded-full transition-all duration-300 ${
+              index === currentIndex 
+                ? "bg-white w-8" 
+                : "bg-white/50 hover:bg-white/75"
+            }`}
+            onClick={() => setCurrentIndex(index)}
+          />
+        ))}
+      </div>
     </div>
   );
 };

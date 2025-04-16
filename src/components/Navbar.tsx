@@ -18,10 +18,10 @@ const Navbar = () => {
   return (
     <nav
       className={cn(
-        "fixed top-0 w-full z-50 transition-all duration-300 ease-in-out backdrop-blur-md",
+        "fixed top-0 w-full z-50 transition-all duration-300 ease-in-out",
         isScrolled 
-          ? "bg-white/80 shadow-lg" 
-          : "bg-gradient-to-r from-hads-purple/40 to-hads-pink/30 border-b border-white/10",
+          ? "bg-white/80 backdrop-blur-md"
+          : "bg-transparent",
         isVisible ? "translate-y-0" : "-translate-y-full"
       )}
     >

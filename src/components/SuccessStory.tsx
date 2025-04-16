@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import CloudMigration from "../images/Success Story.jpg";
 
 const SuccessStory = () => {
   const [animate, setAnimate] = useState(false);
@@ -59,79 +58,64 @@ const SuccessStory = () => {
   ];
 
   return (
-    <div
-      style={{
-        position: "relative",
-        margin: "80px auto",
-        width: "90%",
-        maxWidth: "1200px",
-        padding: "40px 20px",
-        background: "linear-gradient(135deg, rgba(58, 27, 109, 0.1) 0%, rgba(233, 30, 99, 0.1) 100%)",
-        borderRadius: "12px",
-        boxShadow: "0 10px 40px rgba(0,0,0,0.1)",
-        overflow: "hidden",
-        fontFamily: "'Inter', sans-serif",
-      }}
-    >
-      {/* Glass effect overlay */}
-      <div
-        className="absolute inset-0 backdrop-blur-md bg-white/40 z-0"
-      />
+    <div className="relative py-20 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-hads-purple/5 to-hads-pink/5 animate-gradient-shift" />
+      
+      <div className="absolute inset-0 bg-[radial-gradient(#e5e7eb_1px,transparent_1px)] [background-size:20px_20px] opacity-5" />
 
-      {/* Background pattern */}
-      <div
-        className="absolute inset-0 opacity-5"
-        style={{
-          backgroundImage: "radial-gradient(circle at 1px 1px, #000 1px, transparent 0)",
-          backgroundSize: "20px 20px",
-        }}
-      />
-
-      {/* Content */}
-      <div className="relative z-10">
+      <div className="relative container mx-auto px-4 z-10">
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-hads-purple mb-6 relative inline-block">
+          <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-hads-purple to-hads-pink animate-fade-in">
             Our Success Story
-            <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-hads-pink to-hads-purple transform scale-x-0 transition-transform duration-700 group-hover:scale-x-100" />
           </h1>
-          <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto animate-fade-up">
             A journey through our milestones in providing top-tier cloud solutions, from cloud migration to cutting-edge cybersecurity.
           </p>
         </div>
 
-        {/* Timeline grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative">
           {steps.map((step, i) => (
             <div
               key={i}
-              className="relative p-6 rounded-xl bg-white/60 backdrop-blur-sm border border-white/20 shadow-lg transform hover:-translate-y-2 transition-all duration-300"
+              className="group relative"
               style={{
                 opacity: animate ? 1 : 0,
                 transform: animate ? "translateY(0)" : "translateY(40px)",
-                transition: `all 0.8s ease-out ${i * 0.3}s`,
+                transition: `all 0.8s ease-out ${i * 0.2}s`,
               }}
             >
-              <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full bg-gradient-to-br from-hads-purple to-hads-pink text-white flex items-center justify-center text-xl font-bold shadow-lg">
-                {step.year}
-              </div>
-              <h3 className="text-xl font-semibold text-hads-purple mb-4">{step.title}</h3>
-              <p className="text-gray-600">{step.desc}</p>
-              {step.logo && step.logo.length > 0 && (
-                <div className="flex gap-4 mt-4">
-                  {step.logo.map((logo, index) => (
-                    <img
-                      key={index}
-                      src={logo}
-                      alt="Technology Logo"
-                      className="w-8 h-8 object-contain"
-                    />
-                  ))}
+              <div className="relative p-6 rounded-xl backdrop-blur-sm border border-white/20 bg-white/5 hover:bg-white/10 transition-all duration-300 group-hover:-translate-y-2">
+                <div className="absolute -top-4 -right-4 w-16 h-16 rounded-full bg-gradient-to-br from-hads-purple to-hads-pink text-white flex items-center justify-center text-xl font-bold transform transition-transform group-hover:scale-110">
+                  {step.year}
                 </div>
-              )}
+
+                <h3 className="text-xl font-semibold text-hads-purple mb-4">
+                  {step.title}
+                </h3>
+                <p className="text-gray-600">{step.desc}</p>
+
+                {step.logo && step.logo.length > 0 && (
+                  <div className="flex gap-4 mt-4">
+                    {step.logo.map((logo, index) => (
+                      <img
+                        key={index}
+                        src={logo}
+                        alt="Technology Logo"
+                        className="w-8 h-8 object-contain opacity-75 hover:opacity-100 transition-opacity"
+                      />
+                    ))}
+                  </div>
+                )}
+
+                <div className="absolute -bottom-1 left-0 right-0 h-1 bg-gradient-to-r from-hads-purple to-hads-pink opacity-0 group-hover:opacity-100 transition-opacity" />
+              </div>
             </div>
           ))}
         </div>
       </div>
+
+      <div className="absolute top-20 left-10 w-20 h-20 bg-hads-purple/10 rounded-full blur-3xl animate-float" />
+      <div className="absolute bottom-20 right-10 w-32 h-32 bg-hads-pink/10 rounded-full blur-3xl animate-float" style={{ animationDelay: "1s" }} />
     </div>
   );
 };
